@@ -212,7 +212,7 @@ output:
       # If insecure is set to true, all server host names and certificates will be
       # accepted. In this mode TLS based connections are susceptible to
       # man-in-the-middle attacks. Use only for testing.
-      insecure: <%= p('packetbeat.tls.insecure')%>
+      insecure: <%= p('packetbeat.elasticsearch.tls.insecure')%>
 
       # Configure cipher suites to be used for TLS connections
       #cipher_suites: []
