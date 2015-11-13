@@ -1,0 +1,7 @@
+---
+name: packetbeat
+
+dependencies: []
+
+files:
+  - packetbeat-1.0.0-rc1-x86_64.tar.gz

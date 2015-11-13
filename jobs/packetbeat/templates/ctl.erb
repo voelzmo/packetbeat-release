@@ -1,0 +1,31 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/packetbeat
+LOG_DIR=/var/vcap/sys/log/packetbeat
+PIDFILE=${RUN_DIR}/pid
+
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR $LOG_DIR
+    chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    /var/vcap/packages/packetbeat/packetbeat \
+      -e -c /var/vcap/jobs/packetbeat/config/packetbeat.yml \
+      >>  $LOG_DIR/packetbeat.stdout.log \
+      2>> $LOG_DIR/packetbeat.stderr.log
+
+    ;;
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac

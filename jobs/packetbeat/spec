@@ -1,0 +1,19 @@
+---
+name: packetbeat
+templates:
+  - packetbeat.yml.erb: config/packetbeat.yml
+	- ctl.erb: bin/ctl
+
+packages:
+  - packetbeat
+
+properties:
+  elasticsearch:
+	  host:
+	    description: elasticsearch DB host
+	  port:
+		  description: elasticsearch DB port
+	  tls:
+		  insecure:
+			  default: true
+				description: whether an invalid ssl connection is acceptable
