@@ -15,6 +15,13 @@ properties:
     description: "elasticsearch DB host"
   packetbeat.elasticsearch.port:
     description: "elasticsearch DB port"
+    default: 9200
   packetbeat.elasticsearch.tls.insecure:
-    default: true
+    default: false
     description: "whether an invalid ssl connection is acceptable"
+  packetbeat.protocols.http.ports:
+    description: "List of http ports to watch."
+    default: [80, 8080, 8000, 5000, 8002]
+  packetbeat.protocols.redis.ports:
+    description: "List of redis ports to watch."
+    default: [6379]

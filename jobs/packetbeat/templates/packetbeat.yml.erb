@@ -43,7 +43,8 @@ protocols:
   http:
     # Configure the ports where to listen for HTTP traffic. You can disable
     # the HTTP protocol by commenting out the list of ports.
-    ports: [80, 8080, 8000, 5000, 8002]
+    ports: <%= p('packetbeat.protocols.http.ports') %>
+
 
     # Uncomment the following to hide certain parameters in URL or forms attached
     # to HTTP requests. The names of the parameters are case insensitive.
@@ -100,7 +101,7 @@ protocols:
   redis:
     # Configure the ports where to listen for Redis traffic. You can disable
     # the Redis protocol by commenting out the list of ports.
-    ports: [6379]
+    ports: <%= p('packetbeat.protocols.redis.ports') %>
 
   thrift:
     # Configure the ports where to listen for Thrift-RPC traffic. You can disable
@@ -148,7 +149,11 @@ output:
   elasticsearch:
 
     # Set to true to enable elasticsearch output
+    <% if p('packetbeat.elasticsearch.host') =! nil && !p('packetbeat.elasticsearch.host').empty? %>
     enabled: true
+    <% else %>
+    enabled: false
+    <% end %>
 
     # Array of hosts to connect to.
     # Scheme and port can be left out and will be set to the default (http and 9200)
