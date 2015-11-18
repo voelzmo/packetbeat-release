@@ -149,7 +149,7 @@ output:
   elasticsearch:
 
     # Set to true to enable elasticsearch output
-    <% if p('packetbeat.elasticsearch.host') =! nil && !p('packetbeat.elasticsearch.host').empty? %>
+    <% if p('packetbeat.elasticsearch.host') != nil && !p('packetbeat.elasticsearch.host').empty? %>
     enabled: true
     <% else %>
     enabled: false
