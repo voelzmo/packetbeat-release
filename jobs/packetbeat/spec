@@ -25,3 +25,8 @@ properties:
   packetbeat.protocols.redis.ports:
     description: "List of redis ports to watch."
     default: [6379]
+  packetbeat.procs:
+    description: "List of processes to watch. Each process is an object with properties `name` and `cmdline`"
+    example:
+      - {name: nginx, cmdline: nginx}
+      - {name: redis, cmdline: redis-server}
