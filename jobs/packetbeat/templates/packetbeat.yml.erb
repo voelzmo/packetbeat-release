@@ -40,6 +40,7 @@ protocols:
     # send_request:  true
     # send_response: true
 
+<% if p('packetbeat.protocols.http.ports') != nil && !p('packetbeat.protocols.http.ports').empty? %>
   http:
     # Configure the ports where to listen for HTTP traffic. You can disable
     # the HTTP protocol by commenting out the list of ports.
@@ -53,7 +54,7 @@ protocols:
     # sensitive information.
     # Only query parameters and top level form parameters are replaced.
     # hide_keywords: ['pass', 'password', 'passwd']
-
+<% end %>
   memcache:
     # Configure the ports where to listen for memcache traffic. You can disable
     # the Memcache protocol by commenting out the list of ports.
@@ -98,11 +99,12 @@ protocols:
     # the Pgsql protocol by commenting out the list of ports.
     ports: [5432]
 
+<% if p('packetbeat.protocols.redis.ports') != nil && !p('packetbeat.protocols.redis.ports').empty? %>
   redis:
     # Configure the ports where to listen for Redis traffic. You can disable
     # the Redis protocol by commenting out the list of ports.
     ports: <%= p('packetbeat.protocols.redis.ports') %>
-
+<% end %>
   thrift:
     # Configure the ports where to listen for Thrift-RPC traffic. You can disable
     # the Thrift-RPC protocol by commenting out the list of ports.
@@ -123,20 +125,15 @@ protocols:
 # Process matching is optional and can be enabled by uncommenting the following
 # lines.
 #
-#procs:
-#  enabled: false
-#  monitored:
-#    - process: mysqld
-#      cmdline_grep: mysqld
-#
-#    - process: pgsql
-#      cmdline_grep: postgres
-#
-#    - process: nginx
-#      cmdline_grep: nginx
-#
-#    - process: app
-#      cmdline_grep: gunicorn
+<% if_p('packetbeat.procs') do |procs| %>
+procs:
+  enabled: true
+  <% procs.each do |proc| %>
+  monitored:
+    - process: <%= proc.name %>
+      cmdline_grep: <%= proc.cmdline %>
+  <% end %>
+<% end %>
 
 
 ############################# Output ##########################################
