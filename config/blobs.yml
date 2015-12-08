@@ -1,1 +1,5 @@
---- {}
+---
+packetbeat-1.0.0-x86_64.tar.gz:
+  object_id: 531b5a5d-f954-482a-8253-2a07e390494a
+  sha: 466e42ab93eafc7a9d5a962ce03ed63f40e94e23
+  size: 3766855
