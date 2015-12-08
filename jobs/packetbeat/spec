@@ -21,10 +21,10 @@ properties:
     description: "whether an invalid ssl connection is acceptable"
   packetbeat.protocols.http.ports:
     description: "List of http ports to watch."
-    default: [80, 8080, 8000, 5000, 8002]
+    example: [80, 8080, 8000, 5000, 8002]
   packetbeat.protocols.redis.ports:
     description: "List of redis ports to watch."
-    default: [6379]
+    example: [6379]
   packetbeat.procs:
     description: "List of processes to watch. Each process is an object with properties `name` and `cmdline`"
     example:
