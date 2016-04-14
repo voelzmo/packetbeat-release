@@ -6,6 +6,7 @@ description: "a packet reporting tool"
 templates:
   packetbeat.yml.erb: config/packetbeat.yml
   ctl.erb: bin/ctl
+  packetbeat.template.json: config/packetbeat.template.json
 
 packages:
   - packetbeat
@@ -16,6 +17,8 @@ properties:
   packetbeat.elasticsearch.port:
     description: "elasticsearch DB port"
     default: 9200
+  packetbeat.elasticsearch.path:
+    description: "additional path on the elasticsearch host"
   packetbeat.elasticsearch.tls.insecure:
     default: false
     description: "whether an invalid ssl connection is acceptable"
