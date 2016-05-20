@@ -3,3 +3,7 @@ packetbeat-1.0.0-x86_64.tar.gz:
   object_id: 531b5a5d-f954-482a-8253-2a07e390494a
   sha: 466e42ab93eafc7a9d5a962ce03ed63f40e94e23
   size: 3766855
+packetbeat-5.0.0-alpha1-x86_64.tar.gz:
+  object_id: 14f2760f-e07f-4a71-97e2-f84813e5b757
+  sha: a38d697dfc055d4a88592169137b241da7c2f168
+  size: 5391893
