@@ -1,4 +1,4 @@
 set -e
 
-tar -xvf packetbeat-5.0.0-alpha2-x86_64.tar.gz
-cp packetbeat-5.0.0-alpha2-x86_64/* ${BOSH_INSTALL_TARGET}
+tar -xvf packetbeat/packetbeat-5.0.0-beta1-linux-x86_64.tar.gz
+cp packetbeat-5.0.0-beta1-linux-x86_64/* ${BOSH_INSTALL_TARGET}

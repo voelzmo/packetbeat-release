@@ -5,8 +5,9 @@ description: "a packet reporting tool"
 
 templates:
   packetbeat.yml.erb: config/packetbeat.yml
-  ctl.erb: bin/ctl
+  packetbeat_ctl.erb: bin/packetbeat_ctl
   packetbeat.template.json: config/packetbeat.template.json
+  pre-start.erb: bin/pre-start
 
 packages:
   - packetbeat

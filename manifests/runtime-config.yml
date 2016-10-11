@@ -1,0 +1,10 @@
+---
+releases:
+- name: packetbeat
+  version: "1"
+
+addons:
+- name: packetbeat
+  jobs:
+  - name: packetbeat
+    release: packetbeat
