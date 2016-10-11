@@ -62,7 +62,7 @@ packetbeat.protocols.http:
   # Configure the ports where to listen for HTTP traffic. You can disable
   # the HTTP protocol by commenting out the list of ports.
   <% if_p('packetbeat.protocols.http.ports') do |ports| %>
-  ports: [<%= ports.join(',')%>]
+  ports: <%= ports %>
   <% end %>
 
 packetbeat.protocols.memcache:
@@ -120,15 +120,23 @@ fields:
 # Configure what outputs to use when sending the data collected by the beat.
 # Multiple outputs may be used.
 
+<% if p('packetbeat.elasticsearch.host') != nil && !p('packetbeat.elasticsearch.host').empty? %>
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
-  #hosts: ["localhost:9200"]
+  hosts: ["<%= p('packetbeat.elasticsearch.host') %>:<%= p('packetbeat.elasticsearch.port') %>"]
+
+  <% if_p('packetbeat.elasticsearch.path') do |path| %>
+  path:  <%= path %>
+  <% end %>
+
+  ssl.verification_mode: <%= p('packetbeat.')%>
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"
   #username: "elastic"
   #password: "changeme"
+<% end %>
 
 #----------------------------- Logstash output --------------------------------
 #output.logstash:
