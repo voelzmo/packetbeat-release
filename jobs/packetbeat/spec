@@ -15,6 +15,7 @@ packages:
 properties:
   packetbeat.elasticsearch.host:
     description: "elasticsearch DB host"
+    default: ""
   packetbeat.elasticsearch.port:
     description: "elasticsearch DB port"
     default: 9200

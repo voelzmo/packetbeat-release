@@ -12,7 +12,7 @@ case $1 in
 
     echo $$ > $PIDFILE
 
-    /var/vcap/packages/packetbeat/packetbeat \
+    exec /var/vcap/packages/packetbeat/packetbeat \
       -e -c /var/vcap/jobs/packetbeat/config/packetbeat.yml \
       >>  $LOG_DIR/packetbeat.stdout.log \
       2>> $LOG_DIR/packetbeat.stderr.log

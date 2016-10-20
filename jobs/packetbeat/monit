@@ -1,5 +1,5 @@
 check process packetbeat
   with pidfile /var/vcap/sys/run/packetbeat/pid
-  start program "/var/vcap/jobs/packetbeat/bin/ctl start"
-  stop program "/var/vcap/jobs/packetbeat/bin/ctl stop"
+  start program "/var/vcap/jobs/packetbeat/bin/packetbeat_ctl start"
+  stop program "/var/vcap/jobs/packetbeat/bin/packetbeat_ctl stop"
   group vcap
