@@ -1,0 +1,63 @@
+---
+name: logsearch
+
+releases:
+  - name: logsearch
+    version: latest
+
+instance_groups:
+  - name: elasticsearch_master
+    jobs:
+      - name: elasticsearch
+    networks:
+      - name: default
+        static_ips: [10.244.0.101,10.244.0.102]
+    instances: 2
+    persistent_disk_type: big
+    vm_type: big
+    stemcell: default
+    properties:
+      elasticsearch:
+        node:
+          allow_master: true
+  - name: elasticsearch
+    jobs:
+      - name: elasticsearch
+    networks:
+      - name: default
+    instances: 5
+    persistent_disk_type: big
+    vm_type: big
+    stemcell: default
+    properties:
+      elasticsearch:
+        node:
+          allow_data: true
+  - name: kibana
+    jobs:
+      - name:  kibana
+    instances: 1
+    vm_type: default
+    stemcell: default
+    networks:
+      - name: default
+
+properties:
+  kibana:
+    elasticsearch:
+      host: 192.168.0.12
+  elasticsearch:
+    cluster_name: packetbeat
+    master_hosts: [192.168.0.12,192.168.0.13]
+
+update:
+  canaries: 0
+  max_in_flight: 5
+  serial: false
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest

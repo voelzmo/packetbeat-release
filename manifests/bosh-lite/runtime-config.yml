@@ -8,3 +8,5 @@ addons:
   jobs:
   - name: packetbeat
     release: packetbeat
+    properties:
+      elasticsearch.host: 10.244.0.101
