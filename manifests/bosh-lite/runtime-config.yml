@@ -1,7 +1,7 @@
 ---
 releases:
 - name: packetbeat
-  version: "0+dev.10"
+  version: "0+dev.2"
 
 addons:
 - name: packetbeat
@@ -9,4 +9,6 @@ addons:
   - name: packetbeat
     release: packetbeat
     properties:
-      elasticsearch.host: 10.244.0.101
+      packetbeat:
+        elasticsearch:
+          host: 10.244.0.101

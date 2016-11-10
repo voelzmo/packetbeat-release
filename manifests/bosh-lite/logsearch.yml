@@ -13,6 +13,7 @@ instance_groups:
       - name: default
         static_ips: [10.244.0.101]
     instances: 1
+    azs: [z1]
     persistent_disk_type: default
     vm_type: default
     stemcell: default
@@ -20,12 +21,14 @@ instance_groups:
       elasticsearch:
         node:
           allow_master: true
+          allow_data: true
   - name: elasticsearch
     jobs:
       - name: elasticsearch
     networks:
       - name: default
-    instances: 1
+    instances: 3
+    azs: [z1]
     persistent_disk_type: default
     vm_type: default
     stemcell: default
@@ -37,10 +40,25 @@ instance_groups:
     jobs:
       - name:  kibana
     instances: 1
+    azs: [z1]
     vm_type: default
     stemcell: default
     networks:
       - name: default
+  - name: enable_shard_allocation
+    instances: 1
+    lifecycle: errand
+    vm_type: default
+    stemcell: default
+    azs: [z1]
+    jobs:
+      - {name: enable_shard_allocation}
+    networks:
+      - name: default
+    properties:
+      enable_shard_allocation:
+        elasticsearch:
+          master_node: 10.244.0.101
 
 properties:
   kibana:
