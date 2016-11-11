@@ -1,0 +1,88 @@
+---
+name: logsearch
+
+releases:
+  - name: logsearch
+    version: latest
+
+instance_groups:
+  - name: elasticsearch_master
+    jobs:
+      - name: elasticsearch
+    networks:
+      - name: default
+        static_ips: [192.168.0.15]
+        default: [gateway,dns]
+      - name: vip
+        static_ips: [172.18.104.193]
+    instances: 1
+    azs: [z1]
+    persistent_disk_type: big
+    vm_type: default
+    stemcell: default
+    properties:
+      elasticsearch:
+        node:
+          allow_master: true
+          allow_data: true
+  - name: elasticsearch
+    jobs:
+      - name: elasticsearch
+    networks:
+      - name: default
+    instances: 3
+    azs: [z1]
+    persistent_disk_type: big
+    vm_type: default
+    stemcell: default
+    properties:
+      elasticsearch:
+        node:
+          allow_data: true
+  - name: kibana
+    jobs:
+      - name:  kibana
+    instances: 1
+    azs: [z1]
+    vm_type: default
+    stemcell: default
+    networks:
+      - name: default
+        default: [gateway,dns]
+      - name: vip
+        static_ips: [172.18.104.82]
+  - name: enable_shard_allocation
+    instances: 1
+    lifecycle: errand
+    vm_type: default
+    stemcell: default
+    azs: [z1]
+    jobs:
+      - {name: enable_shard_allocation}
+    networks:
+      - name: default
+    properties:
+      enable_shard_allocation:
+        elasticsearch:
+          master_node: 192.168.0.15
+
+
+properties:
+  kibana:
+    elasticsearch:
+      host: 192.168.0.15
+  elasticsearch:
+    cluster_name: packetbeat
+    master_hosts: [192.168.0.15]
+
+update:
+  canaries: 0
+  max_in_flight: 5
+  serial: false
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
