@@ -7,12 +7,16 @@ templates:
   packetbeat.yml.erb: config/packetbeat.yml
   packetbeat_ctl.erb: bin/packetbeat_ctl
   packetbeat.template.json: config/packetbeat.template.json
+  packetbeat.template-es2x.json: config/packetbeat.template-es2x.json
   pre-start.erb: bin/pre-start
 
 packages:
   - packetbeat
 
 properties:
+  packetbeat.environment_name:
+    description: "Name of this environment. Useful to distinguish e.g. staging from prod traffic."
+    default: "default-env"
   packetbeat.elasticsearch.host:
     description: "elasticsearch DB host"
     default: ""

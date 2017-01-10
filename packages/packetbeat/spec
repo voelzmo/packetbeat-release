@@ -4,4 +4,4 @@ name: packetbeat
 dependencies: []
 
 files:
-  - packetbeat/packetbeat-5.0.0-beta1-linux-x86_64.tar.gz
+  - packetbeat/packetbeat-5.1.1-linux-x86_64.tar.gz

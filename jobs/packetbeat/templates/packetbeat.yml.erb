@@ -58,6 +58,15 @@ packetbeat.protocols.dns:
   # (additional resource records) is added to messages.
   include_additionals: true
 
+  # send_request and send_response control whether or not the stringified DNS
+  # request and response message are added to the result.
+  # Nearly all data about the request/response is available in the dns.*
+  # fields, but this can be useful if you need visibility specifically
+  # into the request or the response.
+  # Default: false
+  send_request:  true
+  # send_response: true
+
 packetbeat.protocols.http:
   # Configure the ports where to listen for HTTP traffic. You can disable
   # the HTTP protocol by commenting out the list of ports.
@@ -104,16 +113,16 @@ packetbeat.protocols.nfs:
 
 # The name of the shipper that publishes the network data. It can be used to group
 # all the transactions sent by a single shipper in the web interface.
-name: "Marco's packetbeat test"
+name: "bosh-deployments"
 
 # The tags of the shipper are included in their own field with each
 # transaction published.
-tags: ["<%= spec.name %>/<%= spec.index %>"]
+tags: ["<%= spec.name %>/<%= spec.id %>"]
 
 # Optional fields that you can specify to add additional information to the
 # output.
 fields:
-  env: "sc-6"
+  env: <%= p('packetbeat.environment_name') %>
 
 #================================ Outputs =====================================
 
@@ -178,6 +187,6 @@ logging.files:
   keepfiles: 7
 
 # Additional configuration
-path.conf: /var/vcap/jobs/packetbeat/config
+path.config: /var/vcap/jobs/packetbeat/config
 path.data: /var/vcap/data/packetbeat
 path.logs: /var/vcap/sys/log/packetbeat
