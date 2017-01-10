@@ -1,14 +1,16 @@
 ---
 releases:
 - name: packetbeat
-  version: "0+dev.2"
+  version: "0+dev.1"
 
 addons:
 - name: packetbeat
+  exclude: 
+    deployments: [logsearch]
   jobs:
   - name: packetbeat
     release: packetbeat
     properties:
       packetbeat:
         elasticsearch:
-          host: 192.168.0.15
+          host: 192.168.1.15

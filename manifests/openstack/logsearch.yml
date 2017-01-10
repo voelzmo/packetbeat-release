@@ -11,13 +11,13 @@ instance_groups:
       - name: elasticsearch
     networks:
       - name: default
-        static_ips: [192.168.0.15]
+        static_ips: [192.168.1.15]
         default: [gateway,dns]
       - name: vip
         static_ips: [172.18.104.193]
     instances: 1
     azs: [z1]
-    persistent_disk_type: big
+    persistent_disk_type: large
     vm_type: default
     stemcell: default
     properties:
@@ -32,7 +32,7 @@ instance_groups:
       - name: default
     instances: 3
     azs: [z1]
-    persistent_disk_type: big
+    persistent_disk_type: large
     vm_type: default
     stemcell: default
     properties:
@@ -64,16 +64,16 @@ instance_groups:
     properties:
       enable_shard_allocation:
         elasticsearch:
-          master_node: 192.168.0.15
+          master_node: 192.168.1.15
 
 
 properties:
   kibana:
     elasticsearch:
-      host: 192.168.0.15
+      host: 192.168.1.15
   elasticsearch:
     cluster_name: packetbeat
-    master_hosts: [192.168.0.15]
+    master_hosts: [192.168.1.15]
 
 update:
   canaries: 0
