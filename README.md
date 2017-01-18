@@ -1,4 +1,4 @@
 # packetbeat-release
 A BOSH release for [packetbeat](https://www.elastic.co/products/beats/packetbeat)
 
-Co-locate it with your BOSH Director, send the data to elasticsearch, and get some insight using e.g. the [pre-defined packetbeat kibana dashboards](https://www.elastic.co/guide/en/beats/libbeat/1.0.0/getting-started.html#load-kibana-dashboards)
+Deploy it as an addon to all releases installed with BOSH, by uploading a [runtime-config](/manifests/openstack/runtime-config.yml), forward the data to elasticsearch and get some insight using kibana. You can import [kibana-sample-dashboards](/maniests/openstack/kibana-sample-dashboards.json) as a starting point.
