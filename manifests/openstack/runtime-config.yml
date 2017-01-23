@@ -12,5 +12,8 @@ addons:
     release: packetbeat
     properties:
       packetbeat:
+        protocols:
+          http:
+            ports: [8080,80,4222,2822,8081]
         elasticsearch:
           host: 192.168.1.15
