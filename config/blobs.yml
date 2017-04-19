@@ -1,8 +1,7 @@
-packetbeat/packetbeat-5.0.0-beta1-linux-x86_64.tar.gz:
-  size: 9226810
-  object_id: bbbb304a-949f-42ce-4b52-fe0b69bb1cd5
-  sha: 276701445dc45ccf91210f30eaad7274de1e81d3
 packetbeat/packetbeat-5.1.1-linux-x86_64.tar.gz:
   size: 9412184
   object_id: 8be07c80-11cd-4cf8-4535-73170ec30309
   sha: 80d03c46accae9ef95f79769ac9c4a09e09d5a83
+packetbeat/packetbeat-5.3.0-linux-x86_64.tar.gz:
+  size: 9778765
+  sha: d97315aaeb6b8b25895b116511e13fde366ed93b
