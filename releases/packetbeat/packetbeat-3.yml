@@ -1,0 +1,19 @@
+name: packetbeat
+version: "3"
+commit_hash: eae35ad
+uncommitted_changes: false
+jobs:
+- name: packetbeat
+  version: 45f52e845b1b0d0be43aaec71b16d154ca586b32
+  fingerprint: 45f52e845b1b0d0be43aaec71b16d154ca586b32
+  sha1: 7258eedf316d3cc710d913002e924897640ce3af
+packages:
+- name: packetbeat
+  version: c582a0b8c80c115a90b99be44f3303525b9f976b
+  fingerprint: c582a0b8c80c115a90b99be44f3303525b9f976b
+  sha1: df103c43aff91734e7f20998281e049076548e98
+  dependencies: []
+license:
+  version: c7992a22f40bee6020550270217ac1dd275ef4d4
+  fingerprint: c7992a22f40bee6020550270217ac1dd275ef4d4
+  sha1: 918322df5deb65b9f91c7921c435750abc78a1e4
