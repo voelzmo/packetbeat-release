@@ -30,3 +30,6 @@ properties:
   packetbeat.protocols.http.ports:
     description: "List of http ports to watch."
     example: [80, 8080, 8000, 5000, 8002]
+  packetbeat.shipper_name:
+    description: "shipper name to tag all measurements with"
+    default: "bosh-deployments"
